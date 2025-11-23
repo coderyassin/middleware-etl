@@ -36,7 +36,7 @@
 
 🏗️ EIP Architecture (diagram)
 
-![Architecture Diagram](./assets/eip-architecture.png)
+![Architecture Diagram](./assets/eip-flow-diagram.png)
 
 ---
 
