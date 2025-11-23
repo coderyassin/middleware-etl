@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderRecordRepository {
-    Optional<OrderRecord> findById(Long id);
+    /*Optional<OrderRecord> findById(Long id);
 
     List<OrderRecord> findAll();
 
-    OrderRecord save(OrderRecord orderRecord);
+    OrderRecord save(OrderRecord orderRecord);*/
 }

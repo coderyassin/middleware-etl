@@ -4,19 +4,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yascode.middleware_etl.application.notification.service.NotificationByIdUseCase;
 import org.yascode.middleware_etl.application.notification.service.internal.NotificationByIdService;
-import org.yascode.middleware_etl.domain.repository.NotificationRepository;
+import org.yascode.middleware_etl.infrastructure.repository.JpaNotificationRepository;
 
 @Configuration
 public class NotificationAssembler {
 
-    private final NotificationRepository notificationRepository;
+    private final JpaNotificationRepository jpaNotificationRepository;
 
-    public NotificationAssembler(NotificationRepository notificationRepository) {
-        this.notificationRepository = notificationRepository;
+    public NotificationAssembler(JpaNotificationRepository jpaNotificationRepository) {
+        this.jpaNotificationRepository = jpaNotificationRepository;
     }
 
     @Bean
     public NotificationByIdUseCase notificationByIdUseCase() {
-        return new NotificationByIdService(notificationRepository);
+        return new NotificationByIdService(jpaNotificationRepository);
     }
 }

@@ -21,6 +21,6 @@ public class CustomerCreationService implements CustomerCreationUseCase {
 
         List<CustomerRecord> customerRecords = new ArrayList<>(); // TODO convert the customers list to a CustomerRecord list
 
-        customerRecordRepository.saveAll(customerRecords);
+        //customerRecordRepository.saveAll(customerRecords);
     }
 }
