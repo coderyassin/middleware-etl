@@ -2,21 +2,17 @@ package org.yascode.middleware_etl.infrastructure.assembly;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.yascode.middleware_etl.application.notification.mapper.NotificationMapper;
 import org.yascode.middleware_etl.application.notification.service.NotificationByIdUseCase;
 import org.yascode.middleware_etl.application.notification.service.internal.NotificationByIdService;
-import org.yascode.middleware_etl.infrastructure.repository.JpaNotificationRepository;
+import org.yascode.middleware_etl.domain.port.output.notification.GetNotificationPort;
 
 @Configuration
 public class NotificationAssembler {
 
-    private final JpaNotificationRepository jpaNotificationRepository;
-
-    public NotificationAssembler(JpaNotificationRepository jpaNotificationRepository) {
-        this.jpaNotificationRepository = jpaNotificationRepository;
-    }
-
     @Bean
-    public NotificationByIdUseCase notificationByIdUseCase() {
-        return new NotificationByIdService(jpaNotificationRepository);
+    public NotificationByIdUseCase notificationByIdUseCase(GetNotificationPort getNotificationPort,
+                                                           NotificationMapper notificationMapper) {
+        return new NotificationByIdService(getNotificationPort, notificationMapper);
     }
 }

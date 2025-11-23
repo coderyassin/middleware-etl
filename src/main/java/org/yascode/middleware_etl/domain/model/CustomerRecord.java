@@ -1,8 +1,8 @@
-package org.yascode.middleware_etl.application.customer.dto;
+package org.yascode.middleware_etl.domain.model;
 
 import java.time.LocalDateTime;
 
-public class CustomerDto {
+public class CustomerRecord {
 
     private Long id;
 
@@ -16,15 +16,15 @@ public class CustomerDto {
 
     private LocalDateTime createdAt;
 
-    public CustomerDto() {
+    public CustomerRecord() {
     }
 
-    public CustomerDto(Long id,
-                       String customerId,
-                       String customerName,
-                       String email,
-                       String phone,
-                       LocalDateTime createdAt) {
+    public CustomerRecord(Long id,
+                          String customerId,
+                          String customerName,
+                          String email,
+                          String phone,
+                          LocalDateTime createdAt) {
         this.id = id;
         this.customerId = customerId;
         this.customerName = customerName;
@@ -83,7 +83,7 @@ public class CustomerDto {
 
     @Override
     public String toString() {
-        return "CustomerDto{" +
+        return "CustomerRecord{" +
                 "id=" + id +
                 ", customerId='" + customerId + '\'' +
                 ", customerName='" + customerName + '\'' +

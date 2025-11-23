@@ -3,7 +3,7 @@ package org.yascode.middleware_etl.infrastructure.component.processor.notificati
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
-import org.yascode.middleware_etl.domain.entity.Notification;
+import org.yascode.middleware_etl.domain.model.Notification;
 
 @Component
 public class NotificationProcessor implements Processor {

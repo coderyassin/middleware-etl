@@ -1,9 +1,9 @@
-package org.yascode.middleware_etl.application.notification.dto;
+package org.yascode.middleware_etl.domain.model;
 
 import java.time.LocalDateTime;
 
-public class NotificationDto {
 
+public class Notification {
     private Long id;
 
     private String inputFileName;
@@ -14,14 +14,14 @@ public class NotificationDto {
 
     private String status;
 
-    public NotificationDto() {
+    public Notification() {
     }
 
-    public NotificationDto(Long id,
-                           String inputFileName,
-                           String outputFileName,
-                           LocalDateTime processedAt,
-                           String status) {
+    public Notification(Long id,
+                        String inputFileName,
+                        String outputFileName,
+                        LocalDateTime processedAt,
+                        String status) {
         this.id = id;
         this.inputFileName = inputFileName;
         this.outputFileName = outputFileName;
@@ -71,7 +71,7 @@ public class NotificationDto {
 
     @Override
     public String toString() {
-        return "NotificationDto{" +
+        return "Notification{" +
                 "id=" + id +
                 ", inputFileName='" + inputFileName + '\'' +
                 ", outputFileName='" + outputFileName + '\'' +

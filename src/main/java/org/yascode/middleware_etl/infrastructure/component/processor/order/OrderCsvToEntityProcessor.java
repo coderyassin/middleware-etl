@@ -3,7 +3,7 @@ package org.yascode.middleware_etl.infrastructure.component.processor.order;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
-import org.yascode.middleware_etl.domain.entity.OrderRecord;
+import org.yascode.middleware_etl.domain.model.OrderRecord;
 
 import java.util.ArrayList;
 import java.util.List;

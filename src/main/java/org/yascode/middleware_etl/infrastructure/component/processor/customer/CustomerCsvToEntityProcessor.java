@@ -3,7 +3,7 @@ package org.yascode.middleware_etl.infrastructure.component.processor.customer;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
-import org.yascode.middleware_etl.domain.entity.CustomerRecord;
+import org.yascode.middleware_etl.domain.model.CustomerRecord;
 
 import java.util.ArrayList;
 import java.util.List;

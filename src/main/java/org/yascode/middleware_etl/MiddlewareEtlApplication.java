@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.yascode.middleware_etl.domain.entity.Notification;
-import org.yascode.middleware_etl.domain.repository.NotificationRepository;
+import org.yascode.middleware_etl.infrastructure.adapter.output.entity.NotificationEntity;
+import org.yascode.middleware_etl.infrastructure.adapter.output.repository.NotificationRepository;
+
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class MiddlewareEtlApplication {
@@ -15,12 +17,14 @@ public class MiddlewareEtlApplication {
 	}
 
 	@Bean
-	public CommandLineRunner runner(NotificationRepository notificationRepository) {
+	public CommandLineRunner run(NotificationRepository notificationRepository) {
 		return args -> {
-			Notification notification = Notification.builder()
-					.inputFileName("input.csv")
-					.outputFileName("output.csv")
-					.status("SUCCESS")
+
+			NotificationEntity notification = NotificationEntity.builder()
+					.inputFileName("file-input.csv")
+					.outputFileName("file-output.csv")
+					.processedAt(LocalDateTime.now())
+					.status("PENDING")
 					.build();
 
 			notificationRepository.save(notification);

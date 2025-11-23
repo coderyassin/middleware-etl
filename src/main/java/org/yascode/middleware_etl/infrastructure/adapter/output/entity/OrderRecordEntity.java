@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.domain.entity;
+package org.yascode.middleware_etl.infrastructure.adapter.output.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,29 +6,29 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "customer_records")
+@Table(name = "order_records")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CustomerRecord {
+public class OrderRecordEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_id")
-    private String customerId;
+    @Column(name = "order_id")
+    private String orderId;
 
-    @Column(name = "customer_name")
-    private String customerName;
+    @Column(name = "product_name")
+    private String productName;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "price")
+    private Double price;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

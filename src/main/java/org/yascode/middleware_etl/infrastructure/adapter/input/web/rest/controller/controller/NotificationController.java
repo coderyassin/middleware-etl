@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.infrastructure.adapter.input.rest;
+package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.controller.controller;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.yascode.middleware_etl.application.notification.service.NotificationByIdUseCase;
-import org.yascode.middleware_etl.infrastructure.adapter.input.api.NotificationApi;
+import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.api.NotificationApi;
 
 @RestController
 @RequestMapping("/api/notifications")
-public class NotificationRestAdapter implements NotificationApi {
+public class NotificationController implements NotificationApi {
 
     private final NotificationByIdUseCase notificationByIdUseCase;
 
-    public NotificationRestAdapter(NotificationByIdUseCase notificationByIdUseCase) {
+    public NotificationController(NotificationByIdUseCase notificationByIdUseCase) {
         this.notificationByIdUseCase = notificationByIdUseCase;
     }
 

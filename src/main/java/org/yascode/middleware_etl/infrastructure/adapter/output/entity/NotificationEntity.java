@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.domain.entity;
+package org.yascode.middleware_etl.infrastructure.adapter.output.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Notification {
+public class NotificationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

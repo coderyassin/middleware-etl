@@ -1,8 +1,8 @@
-package org.yascode.middleware_etl.application.order.dto;
+package org.yascode.middleware_etl.domain.model;
 
 import java.time.LocalDateTime;
 
-public class OrderDto {
+public class OrderRecord {
 
     private Long id;
 
@@ -16,15 +16,15 @@ public class OrderDto {
 
     private LocalDateTime createdAt;
 
-    public OrderDto() {
+    public OrderRecord() {
     }
 
-    public OrderDto(Long id,
-                    String orderId,
-                    String productName,
-                    Integer quantity,
-                    Double price,
-                    LocalDateTime createdAt) {
+    public OrderRecord(Long id,
+                       String orderId,
+                       String productName,
+                       Integer quantity,
+                       Double price,
+                       LocalDateTime createdAt) {
         this.id = id;
         this.orderId = orderId;
         this.productName = productName;
@@ -83,7 +83,7 @@ public class OrderDto {
 
     @Override
     public String toString() {
-        return "OrderDto{" +
+        return "OrderRecord{" +
                 "id=" + id +
                 ", orderId='" + orderId + '\'' +
                 ", productName='" + productName + '\'' +

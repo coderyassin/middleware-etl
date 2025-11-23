@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.infrastructure.adapter.input.api;
+package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.api;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
