@@ -40,6 +40,6 @@
 
 ---
 
-🧱 Implementation with Apache Camel: Project Structure
+🧱 Implementation with Apache Camel:
 
 ![Automated file processing with EIP](./assets/automated-file-processing-with-EIP.png)
