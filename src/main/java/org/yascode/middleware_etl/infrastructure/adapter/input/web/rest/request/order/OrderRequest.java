@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.request;
+package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.request.order;
 
 import lombok.*;
 
