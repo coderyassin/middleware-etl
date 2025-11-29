@@ -5,6 +5,8 @@ import org.yascode.middleware_etl.application.notification.mapper.NotificationMa
 import org.yascode.middleware_etl.application.notification.service.NotificationByIdUseCase;
 import org.yascode.middleware_etl.domain.port.output.notification.GetNotificationPort;
 
+import java.util.Optional;
+
 public class NotificationByIdService implements NotificationByIdUseCase {
 
     private final GetNotificationPort getNotificationPort;
@@ -17,10 +19,9 @@ public class NotificationByIdService implements NotificationByIdUseCase {
     }
 
     @Override
-    public NotificationDto getNotification(Long id) {
+    public Optional<NotificationDto> getNotification(Long id) {
         return getNotificationPort.findById(id)
-                .map(notificationMapper::toDto)
-                .orElse(null);
+                .map(notificationMapper::toDto);
     }
 
 }

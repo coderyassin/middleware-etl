@@ -1,4 +1,4 @@
-package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.controller.notification;
+package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.controller.notification.v2;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,15 +11,19 @@ import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.facade.n
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationResponse;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationsResponse;
 
-import static org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.util.ApiResponse.ok;
+import java.util.concurrent.CompletableFuture;
+
+import static org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.util.ApiEndpoints.API_VERSION_V2;
+import static org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.util.ApiEndpoints.Notification.NOTIFICATIONS_BASE;
+import static org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.util.ApiEndpoints.Notification.NOTIFICATIONS_GET_BY_ID;
 
 @RestController
-@RequestMapping("/api/notifications")
-public class NotificationController implements NotificationApi {
+@RequestMapping(value = NOTIFICATIONS_BASE, headers = API_VERSION_V2)
+public class NotificationControllerV2 implements NotificationApi {
 
     private final NotificationFacade notificationFacade;
 
-    public NotificationController(NotificationFacade notificationFacade) {
+    public NotificationControllerV2(NotificationFacade notificationFacade) {
         this.notificationFacade = notificationFacade;
     }
 
@@ -29,8 +33,8 @@ public class NotificationController implements NotificationApi {
     }
 
     @Override
-    @GetMapping("/{id}")
-    public ResponseEntity<NotificationResponse> getNotification(@PathVariable Long id) {
-        return ok(notificationFacade.getNotification(id));
+    @GetMapping(path = NOTIFICATIONS_GET_BY_ID)
+    public CompletableFuture<NotificationResponse> getNotification(@PathVariable Long id) {
+        return notificationFacade.getNotification(id);
     }
 }

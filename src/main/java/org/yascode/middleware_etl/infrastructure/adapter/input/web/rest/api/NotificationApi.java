@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationResponse;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationsResponse;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface NotificationApi {
 
     ResponseEntity<NotificationsResponse> getNotifications(Pageable pageable);
 
-    ResponseEntity<NotificationResponse> getNotification(Long id);
+    CompletableFuture<NotificationResponse> getNotification(Long id);
 }
