@@ -2,8 +2,8 @@ package org.yascode.middleware_etl.domain.model;
 
 import java.time.LocalDateTime;
 
-
 public class Notification {
+
     private Long id;
 
     private String inputFileName;

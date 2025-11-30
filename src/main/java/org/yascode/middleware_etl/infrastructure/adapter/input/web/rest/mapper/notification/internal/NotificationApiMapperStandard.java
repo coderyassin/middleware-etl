@@ -1,16 +1,17 @@
 package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.mapper.notification.internal;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.yascode.middleware_etl.application.notification.dto.NotificationDto;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.mapper.notification.NotificationApiMapper;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationResponse;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationsResponse;
 
-import java.util.List;
 import java.util.Objects;
 
 @Component
 public class NotificationApiMapperStandard implements NotificationApiMapper {
+
     @Override
     public NotificationResponse toNotificationResponse(NotificationDto dto) {
         NotificationResponse notificationResponse = null;
@@ -29,17 +30,9 @@ public class NotificationApiMapperStandard implements NotificationApiMapper {
     }
 
     @Override
-    public NotificationsResponse toNotificationsResponse(List<NotificationDto> dtoList) {
-        NotificationsResponse notificationsResponse = null;
-
-        if (Objects.nonNull(dtoList) && !dtoList.isEmpty()) {
-            notificationsResponse = NotificationsResponse.builder()
-                    .notifications(dtoList.stream()
-                            .map(this::toNotificationResponse)
-                            .toList())
-                    .build();
-        }
-
-        return notificationsResponse;
+    public NotificationsResponse toNotificationsResponse(Page<NotificationResponse> page) {
+        return NotificationsResponse.builder()
+                .notifications(page)
+                .build();
     }
 }

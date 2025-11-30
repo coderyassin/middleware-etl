@@ -1,8 +1,7 @@
 package org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification;
 
 import lombok.*;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 @Getter
 @Setter
@@ -11,6 +10,5 @@ import java.util.List;
 @Builder
 @ToString
 public class NotificationsResponse {
-
-    private List<NotificationResponse> notifications;
+    private Page<NotificationResponse> notifications;
 }

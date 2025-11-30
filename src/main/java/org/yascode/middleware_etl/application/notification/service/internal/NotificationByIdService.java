@@ -19,8 +19,8 @@ public class NotificationByIdService implements NotificationByIdUseCase {
     }
 
     @Override
-    public Optional<NotificationDto> getNotification(Long id) {
-        return getNotificationPort.findById(id)
+    public Optional<NotificationDto> execute(Long id) {
+        return getNotificationPort.execute(id)
                 .map(notificationMapper::toDto);
     }
 

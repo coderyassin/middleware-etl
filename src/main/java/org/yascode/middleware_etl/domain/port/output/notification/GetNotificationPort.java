@@ -7,5 +7,5 @@ import java.util.Optional;
 @FunctionalInterface
 public interface GetNotificationPort {
 
-    Optional<Notification> findById(Long id);
+    Optional<Notification> execute(Long id);
 }
