@@ -7,9 +7,12 @@ import org.springframework.stereotype.Service;
 import org.yascode.middleware_etl.application.notification.exception.business.NotificationNotFoundException;
 import org.yascode.middleware_etl.application.notification.service.NotificationByIdUseCase;
 import org.yascode.middleware_etl.application.notification.service.NotificationsUseCase;
+import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.facade.notification.fallback.NotificationFallbackFacade;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.mapper.notification.NotificationApiMapper;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationResponse;
 import org.yascode.middleware_etl.infrastructure.adapter.input.web.rest.response.notification.NotificationsResponse;
+import org.yascode.middleware_etl.infrastructure.annotation.FeatureToggle;
+import org.yascode.middleware_etl.infrastructure.feature.ApplicationFeatures;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +25,7 @@ public class NotificationFacade {
     private final long notificationByIdTimeout = 3;
     private final long notificationsTimeout = 9;
 
-    private final NotificationApiMapper notificationApiMapper;
+    protected final NotificationApiMapper notificationApiMapper;
     private final NotificationsUseCase notificationsUseCase;
     private final NotificationByIdUseCase notificationByIdUseCase;
 
@@ -35,6 +38,10 @@ public class NotificationFacade {
     }
 
     @Async("asyncExecutor")
+    @FeatureToggle(
+            value = ApplicationFeatures.GET_NOTIFICATIONS,
+            fallbackBean = NotificationFallbackFacade.class
+    )
     public CompletableFuture<NotificationsResponse> getNotifications(Pageable pageable) {
 
         return CompletableFuture
@@ -46,6 +53,10 @@ public class NotificationFacade {
     }
 
     @Async("asyncExecutor")
+    @FeatureToggle(
+            value = ApplicationFeatures.GET_NOTIFICATION,
+            fallbackMessage = "Notification retrieval is temporarily disabled"
+    )
     public CompletableFuture<NotificationResponse> getNotification(Long id) {
 
         return CompletableFuture

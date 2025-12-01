@@ -8,9 +8,25 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled: true
+logging:
+  level:
+    org.yascode.middleware_etl: DEBUG
+    org.togglz: DEBUG
+togglz:
+  enabled: true
+  feature-enums: org.yascode.middleware_etl.infrastructure.feature.ApplicationFeatures
+  features-file: classpath:features.properties
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false
+    use-management-port: false
 source:
   input:
     directory: ./input
